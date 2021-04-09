@@ -2,7 +2,7 @@
 include 'protect.php';
 require 'connect.php';
 $sql = "SELECT * FROM products";
-$result = mysqli_query($con, $sql) or die( mysqli_error($con) );// executing the query
+$result = mysqli_query($con, $sql) or die(mysqli_error($con));// executing the query
 $rows = mysqli_fetch_all($result, 1);//assoc array
 mysqli_close($con);//close the connection
 ?>
@@ -10,7 +10,8 @@ mysqli_close($con);//close the connection
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cart</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -25,10 +26,12 @@ mysqli_close($con);//close the connection
         <div class="col-sm-12">
 
             <?php
-              $no_of_items = count($_SESSION["products"]);
+             if (isset($_SESSION["products"]))
+                 $no_of_items =count( array_unique($_SESSION["products"]) );
             ?>
 
-            <p>You have <?=$no_of_items ?> items in your cart</p>
+            <p class="text-info mb-0">You have <?= $no_of_items ?? 0 ?> items in your cart</p>
+            <a href="checkout.php" class="btn btn-outline-info btn-sm mb-1">Check Out</a>
 
 
             <table id="example" class="table table-striped table-bordered">
@@ -49,8 +52,9 @@ mysqli_close($con);//close the connection
                         <td> <?= $product["title"] ?> </td>
                         <td> <?= $product["genre"] ?> </td>
                         <td> <?= $product["description"] ?> </td>
-                        <td> <img src="<?=$product['poster']?>" width="60" height="60" alt=""> </td>
-                        <td> <a class="btn btn-info btn-sm" href="add-to-cart.php?id=<?=$product["id"]?>">Add To Cart</a>  </td>
+                        <td><img src="<?= $product['poster'] ?>" width="60" height="60" alt=""></td>
+                        <td><a class="btn btn-info btn-sm" href="add-to-cart.php?id=<?= $product["id"] ?>">Add To
+                                Cart</a></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -64,9 +68,9 @@ mysqli_close($con);//close the connection
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#example').DataTable();
-    } );
+    });
 </script>
 
 </body>

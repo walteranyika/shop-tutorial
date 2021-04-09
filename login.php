@@ -13,8 +13,7 @@ if ( isset($_REQUEST["email"]) )
        $user = mysqli_fetch_assoc($result);
        $hash = $user["password"];
        if (password_verify($password, $hash))
-       {
-          //success 123456
+       {//success 123456
           session_start();
           $_SESSION["names"] = $user["names"];//store users data in a session
           $_SESSION["id"] = $user["id"];
@@ -23,10 +22,12 @@ if ( isset($_REQUEST["email"]) )
        }else{
           //failed
            setcookie("error","Wrong username or password", time()+3);
+           header("location:login.php");
        }
     }
     else{
         setcookie("error","Wrong username or password", time()+3);
+        header("location:login.php");
     }
     mysqli_close($con);
 }
@@ -37,7 +38,7 @@ if ( isset($_REQUEST["email"]) )
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Users Form</title>
+    <title>Login</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

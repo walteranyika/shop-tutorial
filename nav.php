@@ -32,8 +32,6 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="logout.php">Logout</a>
-<!--                        <a class="dropdown-item" href="#">Profile</a>-->
-<!--                        <a class="dropdown-item" href="#">Change Password</a>-->
                     </div>
                 </li>
 

@@ -27,8 +27,9 @@ if ( isset($_REQUEST["title"]) )
     //bind data
     mysqli_stmt_bind_param($stmt, "ssssi", $title, $target_file, $description, $genre, $price);
     mysqli_stmt_execute($stmt);
-
     mysqli_close($con);//close the connection
+    setcookie("success","Product Added", time()+3);
+    header("location:add-product.php");
 }
 ?>
 <!doctype html>
@@ -51,6 +52,9 @@ if ( isset($_REQUEST["title"]) )
     <div class="row justify-content-center">
         <div class="col-sm-8 col-md-5">
             <h4>New Product</h4>
+
+            <?php include 'alert.php' ?>
+
             <form action="add-product.php" method="post" enctype="multipart/form-data">
 
                 <div class="form-group">
@@ -84,7 +88,7 @@ if ( isset($_REQUEST["title"]) )
                     <input type="number" class="form-control" name="price" required>
                 </div>
 
-                <button class="btn btn-danger">Add Customer</button>
+                <button class="btn btn-danger">Add Product</button>
 
             </form>
         </div>
