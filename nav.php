@@ -25,6 +25,9 @@
                     <a class="nav-link" href="sell.php">Sell</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="reports.php">Report</a>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
