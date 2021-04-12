@@ -96,7 +96,11 @@ foreach ($rows as $item){
 
                 <tfoot>
                     <tr>
-
+                        <th></th>
+                        <th></th>
+                        <th class="total"></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </tfoot>
 
@@ -117,7 +121,7 @@ foreach ($rows as $item){
   $('#example').DataTable( {
       drawCallback: function () {
           var api = this.api();
-          $( api.table().footer() ).html(
+          $('.total').html(
               api.column( 2, {page:'current'} ).data().sum()
           );
       }
