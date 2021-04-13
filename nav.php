@@ -30,7 +30,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle  <?php if($_SESSION["admin"]==1) echo 'text-danger' ?>" href="#" id="navbardrop" data-toggle="dropdown">
                        <?= $_SESSION["names"] ?>
                     </a>
                     <div class="dropdown-menu">

@@ -1,5 +1,7 @@
 <?php
 include 'protect.php';
+include 'protect-admins.php';
+
 require 'connect.php';
 $sql = "SELECT 
         customers.names AS customer, products.title, products.price, sales.date_sold, users.names AS user
@@ -98,7 +100,7 @@ foreach ($rows as $item){
                     <tr>
                         <th></th>
                         <th></th>
-                        <th class="total"></th>
+                        <th class="total text-info"></th>
                         <th></th>
                         <th></th>
                     </tr>

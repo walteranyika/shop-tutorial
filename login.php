@@ -17,6 +17,7 @@ if ( isset($_REQUEST["email"]) )
           session_start();
           $_SESSION["names"] = $user["names"];//store users data in a session
           $_SESSION["id"] = $user["id"];
+          $_SESSION["admin"] = $user["admin"];
           //redirect to 'home' page
           header("location:add-product.php"); //TODO go to sales.php
        }else{
