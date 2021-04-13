@@ -10,9 +10,7 @@
         <ul class="navbar-nav ml-auto">
 
             <?php if (isset($_SESSION["id"])) : ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="register-user.php">Add User</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="add-product.php">Add Movie</a>
                 </li>
@@ -25,9 +23,15 @@
                     <a class="nav-link" href="sell.php">Sell</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="reports.php">Report</a>
-                </li>
+                <?php if ($_SESSION["admin"]==1) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reports.php">Report</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="register-user.php">Add User</a>
+                    </li>
+                <?php endif; ?>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle  <?php if($_SESSION["admin"]==1) echo 'text-danger' ?>" href="#" id="navbardrop" data-toggle="dropdown">
